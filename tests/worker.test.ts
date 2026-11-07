@@ -1,5 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { GameWorker } from '../src/app/worker';
+import { generatePuzzle } from '../src/core';
 
 class FakeWorker {
   static instances: FakeWorker[] = [];
@@ -23,6 +24,17 @@ describe('фоновый обработчик', () => {
     await expect(retry).resolves.toEqual({ id: 'новая' });
     rpc.dispose();
   });
+  it('повторяет подсказку в новом worker после ошибки загрузки', async () => {
+    const puzzle = generatePuzzle({ size: 6, seed: 'повтор', maxAttempts: 1 });
+    const warning = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const rpc = new GameWorker(), request = rpc.hint(puzzle, [...puzzle.givens]);
+    FakeWorker.instances[0].onerror!();
+    await Promise.resolve();
+    expect(FakeWorker.instances).toHaveLength(2);
+    FakeWorker.instances[1].onmessage!({ data: { id: 2, result: { kind: 'stuck', message: 'Нет вывода' } } });
+    await expect(request).resolves.toEqual({ kind: 'stuck', message: 'Нет вывода' });
+    warning.mockRestore(); rpc.dispose();
+  });
   it('останавливает зависший worker и позволяет повторить запрос', async () => {
     const rpc = new GameWorker(), request = rpc.generate(6);
     const rejected = expect(request).rejects.toThrow('Превышено время ожидания');
@@ -39,7 +51,7 @@ describe('фоновый обработчик', () => {
     await expect(rpc.generate(6)).rejects.toThrow('отправка');
     expect(vi.getTimerCount()).toBe(0);
     const retry = rpc.generate(6);
-    FakeWorker.instances[0].onmessage!({ data: { id: 3, result: 'повтор' } });
+    FakeWorker.instances[1].onmessage!({ data: { id: 3, result: 'повтор' } });
     await expect(retry).resolves.toBe('повтор'); rpc.dispose();
   });
 });
