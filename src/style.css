@@ -153,7 +153,9 @@ main {
 .board {
   --size: 6;
   display: grid;
-  grid-template-columns: repeat(var(--size),1fr);
+  /* Минимум в ноль не позволяет размеру SVG растягивать отдельные дорожки. */
+  grid-template-columns: repeat(var(--size), minmax(0, 1fr));
+  grid-template-rows: repeat(var(--size), minmax(0, 1fr));
   width: min(100%,600px);
   aspect-ratio: 1;
   margin: auto;
@@ -162,6 +164,10 @@ main {
   gap: 1px;
   user-select: none;
   touch-action: manipulation
+}
+/* Строки остаются в дереве доступности, а клетки участвуют в общей сетке. */
+.board-row {
+  display: contents;
 }
 .board.zoomed {
   width: 600px;

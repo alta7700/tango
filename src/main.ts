@@ -57,14 +57,20 @@ function render(focus?: number) {
   progress.textContent = `${values.filter(v => v !== null).length} / ${values.length}`;
   status.textContent = paused ? 'Игра на паузе' : busy ? 'Подождите немного…' : notice || (validation.conflicts[0]?.message ?? '');
   board.style.setProperty('--size', String(puzzle.size)); board.innerHTML = '';
+  board.setAttribute('aria-rowcount', String(puzzle.size)); board.setAttribute('aria-colcount', String(puzzle.size));
+  // Строки сохраняют семантику таблицы, а массив клеток — индексацию связей.
+  const rows = Array.from({ length: puzzle.size }, (_, i) => {
+    const row = document.createElement('div'); row.className = 'board-row'; row.setAttribute('role', 'row'); row.setAttribute('aria-rowindex', String(i + 1)); board.append(row); return row;
+  });
+  const cells: HTMLButtonElement[] = [];
   values.forEach((value, i) => {
     const cell = document.createElement('button'); cell.type = 'button'; cell.className = `cell ${value ?? ''}${puzzle.givens[i] !== null ? ' given' : ''}${conflicts.has(i) ? ' conflict' : ''}${related.has(i) ? ' related' : ''}`;
-    cell.dataset.index = String(i); cell.setAttribute('role', 'gridcell'); cell.setAttribute('aria-label', `Строка ${Math.floor(i / puzzle.size) + 1}, столбец ${i % puzzle.size + 1}: ${valueName(value)}${puzzle.givens[i] !== null ? ', задано' : ''}`);
+    cell.dataset.index = String(i); cell.setAttribute('role', 'gridcell'); cell.setAttribute('aria-colindex', String(i % puzzle.size + 1)); cell.setAttribute('aria-label', `Строка ${Math.floor(i / puzzle.size) + 1}, столбец ${i % puzzle.size + 1}: ${valueName(value)}${puzzle.givens[i] !== null ? ', задано' : ''}`);
     cell.disabled = locked || validation.complete; cell.innerHTML = value ? symbols[value] : '';
-    board.append(cell);
+    rows[Math.floor(i / puzzle.size)].append(cell); cells.push(cell);
   });
   puzzle.relations.forEach((relation, index) => {
-    const a = Math.min(relation.a, relation.b), b = Math.max(relation.a, relation.b), cell = board.children[a] as HTMLElement;
+    const a = Math.min(relation.a, relation.b), b = Math.max(relation.a, relation.b), cell = cells[a];
     const marker = document.createElement('span'); marker.className = `relation ${b - a === 1 ? 'horizontal' : 'vertical'}${relatedRelations.has(index) ? ' highlighted' : ''}`; marker.textContent = relation.type === 'equal' ? '=' : '×'; marker.setAttribute('aria-hidden', 'true'); cell.append(marker);
   });
   panel.hidden = !hint; panel.innerHTML = '';
@@ -77,7 +83,7 @@ function render(focus?: number) {
     }
   }
   victory.hidden = !validation.complete;
-  if (validation.complete) { victory.innerHTML = `<strong>Отличная работа!</strong><p>Поле ${puzzle.size} × ${puzzle.size} решено за ${timeText(state.elapsed)}.</p><button class="primary" id="victory-new">Новая игра</button>`; $('#victory-new').onclick = () => void startGame(); }
+  if (validation.complete) { victory.innerHTML = `<strong>Отличная работа!</strong><p>Поле ${puzzle.size} × ${puzzle.size} решено за ${timeText(state.elapsed)}.</p><button class="primary" id="victory-new">Новая игра</button>`; $('#victory-new').onclick = startFromClick; }
   const targetFocus = focus ?? focusedIndex ?? (!locked ? focusAfterPause : undefined);
   if (!locked && targetFocus !== undefined) { board.querySelector<HTMLButtonElement>(`[data-index="${targetFocus}"]`)?.focus(); focusAfterPause = undefined; }
 }
@@ -127,7 +133,13 @@ board.addEventListener('keydown', e => {
   if (e.key === 'Delete' || e.key === 'Backspace') { e.preventDefault(); change(i, null); }
 });
 board.addEventListener('contextmenu', e => e.preventDefault()); board.addEventListener('selectstart', e => e.preventDefault());
-$('#new').onclick = () => void startGame(); $('#hint').onclick = () => void requestHint();
+// Второй щелчок может прийти уже после быстрой генерации первой партии.
+function startFromClick(event: MouseEvent) { if (event.detail <= 1) void startGame(); }
+$('#new').onclick = startFromClick; $('#hint').onclick = () => void requestHint();
+// Удержание Enter не должно повторно запускать партию после окончания генерации.
+root.addEventListener('keydown', event => {
+  if (event.repeat && event.key === 'Enter' && (event.target as HTMLElement).matches('#new, #victory-new')) event.preventDefault();
+});
 $('#undo').onclick = () => { if (!state || busy || paused) return; syncTime(); state = undo(state); version++; hint = null; notice = ''; save(); render(); };
 $('#reset').onclick = () => { if (!state || busy || paused) return; syncTime(); state = reset(state); version++; hint = null; notice = ''; save(); render(); };
 $('#zoom').onclick = () => { zoom = !zoom; render(); };
