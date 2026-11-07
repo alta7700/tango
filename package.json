@@ -1,0 +1,19 @@
+{
+  "name": "tango",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run --passWithNoTests",
+    "build:standalone": "VITE_GAME_PLATFORM=standalone vite build --outDir dist/standalone",
+    "build:yandex": "VITE_GAME_PLATFORM=yandex vite build --outDir dist/yandex",
+    "build": "npm run build:standalone && npm run build:yandex"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2",
+    "vite": "^8.3.6",
+    "vitest": "^5.1.0"
+  }
+}

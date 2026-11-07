@@ -1,0 +1,3559 @@
+{
+  "description": "Проверка алгоритмической модели, без кода браузерной игры",
+  "balance_rule": "В каждой строке и столбце поровну солнц и лун",
+  "catalogue_counts": {
+    "6": 14,
+    "8": 34,
+    "10": 84
+  },
+  "generated_puzzles": [
+    {
+      "size": 6,
+      "seed": 7,
+      "generation_policy": "только единственность",
+      "given_count": 4,
+      "edge_count": 7,
+      "solution_count_capped_at_2": 1,
+      "valid_by_direct_check": true,
+      "symbol_inversion_without_givens_has_multiple_solutions": true,
+      "opposite_value_in_unknown_cell_has_no_solution": true,
+      "solved_by_line_propagation_without_search": false,
+      "rejected_deletions": 11,
+      "givens": [
+        {
+          "row": 3,
+          "column": 1,
+          "symbol": "луна"
+        },
+        {
+          "row": 3,
+          "column": 4,
+          "symbol": "солнце"
+        },
+        {
+          "row": 4,
+          "column": 1,
+          "symbol": "солнце"
+        },
+        {
+          "row": 4,
+          "column": 6,
+          "symbol": "солнце"
+        }
+      ],
+      "edges": [
+        {
+          "from": [
+            1,
+            2
+          ],
+          "to": [
+            1,
+            3
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            2,
+            1
+          ],
+          "to": [
+            3,
+            1
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            2,
+            4
+          ],
+          "to": [
+            3,
+            4
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            2,
+            4
+          ],
+          "to": [
+            2,
+            5
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            3,
+            6
+          ],
+          "to": [
+            4,
+            6
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            4,
+            3
+          ],
+          "to": [
+            5,
+            3
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            5,
+            4
+          ],
+          "to": [
+            5,
+            5
+          ],
+          "relation": "×"
+        }
+      ],
+      "solution": [
+        "СЛЛСЛС",
+        "СЛСЛСЛ",
+        "ЛСЛССЛ",
+        "СЛСЛЛС",
+        "ЛССЛСЛ",
+        "ЛСЛСЛС"
+      ]
+    },
+    {
+      "size": 6,
+      "seed": 29,
+      "generation_policy": "только единственность",
+      "given_count": 4,
+      "edge_count": 7,
+      "solution_count_capped_at_2": 1,
+      "valid_by_direct_check": true,
+      "symbol_inversion_without_givens_has_multiple_solutions": true,
+      "opposite_value_in_unknown_cell_has_no_solution": true,
+      "solved_by_line_propagation_without_search": true,
+      "rejected_deletions": 11,
+      "givens": [
+        {
+          "row": 3,
+          "column": 1,
+          "symbol": "солнце"
+        },
+        {
+          "row": 3,
+          "column": 6,
+          "symbol": "солнце"
+        },
+        {
+          "row": 4,
+          "column": 3,
+          "symbol": "луна"
+        },
+        {
+          "row": 6,
+          "column": 4,
+          "symbol": "луна"
+        }
+      ],
+      "edges": [
+        {
+          "from": [
+            1,
+            4
+          ],
+          "to": [
+            1,
+            5
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            2,
+            2
+          ],
+          "to": [
+            2,
+            3
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            3,
+            2
+          ],
+          "to": [
+            4,
+            2
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            4,
+            1
+          ],
+          "to": [
+            4,
+            2
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            4,
+            4
+          ],
+          "to": [
+            5,
+            4
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            5,
+            2
+          ],
+          "to": [
+            6,
+            2
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            5,
+            6
+          ],
+          "to": [
+            6,
+            6
+          ],
+          "relation": "="
+        }
+      ],
+      "solution": [
+        "ЛСЛССЛ",
+        "ЛССЛСЛ",
+        "СЛЛСЛС",
+        "ЛСЛССЛ",
+        "СЛСЛЛС",
+        "СЛСЛЛС"
+      ]
+    },
+    {
+      "size": 6,
+      "seed": 101,
+      "generation_policy": "только единственность",
+      "given_count": 4,
+      "edge_count": 7,
+      "solution_count_capped_at_2": 1,
+      "valid_by_direct_check": true,
+      "symbol_inversion_without_givens_has_multiple_solutions": true,
+      "opposite_value_in_unknown_cell_has_no_solution": true,
+      "solved_by_line_propagation_without_search": true,
+      "rejected_deletions": 11,
+      "givens": [
+        {
+          "row": 1,
+          "column": 3,
+          "symbol": "луна"
+        },
+        {
+          "row": 2,
+          "column": 4,
+          "symbol": "луна"
+        },
+        {
+          "row": 4,
+          "column": 2,
+          "symbol": "солнце"
+        },
+        {
+          "row": 5,
+          "column": 6,
+          "symbol": "солнце"
+        }
+      ],
+      "edges": [
+        {
+          "from": [
+            1,
+            4
+          ],
+          "to": [
+            2,
+            4
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            2,
+            1
+          ],
+          "to": [
+            2,
+            2
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            2,
+            4
+          ],
+          "to": [
+            3,
+            4
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            2,
+            4
+          ],
+          "to": [
+            2,
+            5
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            3,
+            1
+          ],
+          "to": [
+            3,
+            2
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            4,
+            6
+          ],
+          "to": [
+            5,
+            6
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            5,
+            3
+          ],
+          "to": [
+            5,
+            4
+          ],
+          "relation": "="
+        }
+      ],
+      "solution": [
+        "ЛСЛСЛС",
+        "СЛСЛСЛ",
+        "ССЛСЛЛ",
+        "ЛСЛЛСС",
+        "ЛЛССЛС",
+        "СЛСЛСЛ"
+      ]
+    },
+    {
+      "size": 8,
+      "seed": 7,
+      "generation_policy": "только единственность",
+      "given_count": 6,
+      "edge_count": 12,
+      "solution_count_capped_at_2": 1,
+      "valid_by_direct_check": true,
+      "symbol_inversion_without_givens_has_multiple_solutions": true,
+      "opposite_value_in_unknown_cell_has_no_solution": true,
+      "solved_by_line_propagation_without_search": false,
+      "rejected_deletions": 18,
+      "givens": [
+        {
+          "row": 1,
+          "column": 6,
+          "symbol": "луна"
+        },
+        {
+          "row": 2,
+          "column": 8,
+          "symbol": "луна"
+        },
+        {
+          "row": 5,
+          "column": 4,
+          "symbol": "луна"
+        },
+        {
+          "row": 5,
+          "column": 7,
+          "symbol": "луна"
+        },
+        {
+          "row": 6,
+          "column": 4,
+          "symbol": "луна"
+        },
+        {
+          "row": 8,
+          "column": 8,
+          "symbol": "солнце"
+        }
+      ],
+      "edges": [
+        {
+          "from": [
+            2,
+            5
+          ],
+          "to": [
+            2,
+            6
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            2,
+            7
+          ],
+          "to": [
+            3,
+            7
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            3,
+            3
+          ],
+          "to": [
+            4,
+            3
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            4,
+            3
+          ],
+          "to": [
+            4,
+            4
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            4,
+            5
+          ],
+          "to": [
+            4,
+            6
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            5,
+            2
+          ],
+          "to": [
+            6,
+            2
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            6,
+            1
+          ],
+          "to": [
+            6,
+            2
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            7,
+            2
+          ],
+          "to": [
+            8,
+            2
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            7,
+            6
+          ],
+          "to": [
+            7,
+            7
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            8,
+            1
+          ],
+          "to": [
+            8,
+            2
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            8,
+            2
+          ],
+          "to": [
+            8,
+            3
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            8,
+            5
+          ],
+          "to": [
+            8,
+            6
+          ],
+          "relation": "×"
+        }
+      ],
+      "solution": [
+        "ЛСЛСЛЛСС",
+        "ССЛЛССЛЛ",
+        "СЛСЛСЛЛС",
+        "ЛЛССЛССЛ",
+        "ЛСЛЛССЛС",
+        "СЛСЛСЛСЛ",
+        "СЛССЛЛСЛ",
+        "ЛСЛСЛСЛС"
+      ]
+    },
+    {
+      "size": 8,
+      "seed": 29,
+      "generation_policy": "только единственность",
+      "given_count": 9,
+      "edge_count": 8,
+      "solution_count_capped_at_2": 1,
+      "valid_by_direct_check": true,
+      "symbol_inversion_without_givens_has_multiple_solutions": true,
+      "opposite_value_in_unknown_cell_has_no_solution": true,
+      "solved_by_line_propagation_without_search": false,
+      "rejected_deletions": 17,
+      "givens": [
+        {
+          "row": 1,
+          "column": 3,
+          "symbol": "солнце"
+        },
+        {
+          "row": 1,
+          "column": 6,
+          "symbol": "солнце"
+        },
+        {
+          "row": 1,
+          "column": 8,
+          "symbol": "солнце"
+        },
+        {
+          "row": 2,
+          "column": 2,
+          "symbol": "солнце"
+        },
+        {
+          "row": 2,
+          "column": 6,
+          "symbol": "луна"
+        },
+        {
+          "row": 6,
+          "column": 3,
+          "symbol": "солнце"
+        },
+        {
+          "row": 6,
+          "column": 5,
+          "symbol": "солнце"
+        },
+        {
+          "row": 7,
+          "column": 2,
+          "symbol": "луна"
+        },
+        {
+          "row": 8,
+          "column": 7,
+          "symbol": "луна"
+        }
+      ],
+      "edges": [
+        {
+          "from": [
+            3,
+            1
+          ],
+          "to": [
+            4,
+            1
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            3,
+            2
+          ],
+          "to": [
+            4,
+            2
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            3,
+            4
+          ],
+          "to": [
+            4,
+            4
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            3,
+            6
+          ],
+          "to": [
+            3,
+            7
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            5,
+            4
+          ],
+          "to": [
+            5,
+            5
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            5,
+            7
+          ],
+          "to": [
+            6,
+            7
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            7,
+            4
+          ],
+          "to": [
+            8,
+            4
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            7,
+            6
+          ],
+          "to": [
+            8,
+            6
+          ],
+          "relation": "="
+        }
+      ],
+      "solution": [
+        "ЛЛССЛСЛС",
+        "ЛСЛСЛЛСС",
+        "СЛСЛСЛСЛ",
+        "СЛСЛЛСЛС",
+        "ЛСЛССЛСЛ",
+        "ЛССЛСЛЛС",
+        "СЛЛСЛССЛ",
+        "ССЛЛССЛЛ"
+      ]
+    },
+    {
+      "size": 8,
+      "seed": 101,
+      "generation_policy": "только единственность",
+      "given_count": 9,
+      "edge_count": 7,
+      "solution_count_capped_at_2": 1,
+      "valid_by_direct_check": true,
+      "symbol_inversion_without_givens_has_multiple_solutions": true,
+      "opposite_value_in_unknown_cell_has_no_solution": true,
+      "solved_by_line_propagation_without_search": false,
+      "rejected_deletions": 16,
+      "givens": [
+        {
+          "row": 1,
+          "column": 4,
+          "symbol": "солнце"
+        },
+        {
+          "row": 2,
+          "column": 7,
+          "symbol": "солнце"
+        },
+        {
+          "row": 3,
+          "column": 2,
+          "symbol": "луна"
+        },
+        {
+          "row": 3,
+          "column": 5,
+          "symbol": "луна"
+        },
+        {
+          "row": 5,
+          "column": 4,
+          "symbol": "луна"
+        },
+        {
+          "row": 5,
+          "column": 7,
+          "symbol": "солнце"
+        },
+        {
+          "row": 7,
+          "column": 2,
+          "symbol": "луна"
+        },
+        {
+          "row": 7,
+          "column": 4,
+          "symbol": "луна"
+        },
+        {
+          "row": 7,
+          "column": 5,
+          "symbol": "солнце"
+        }
+      ],
+      "edges": [
+        {
+          "from": [
+            2,
+            1
+          ],
+          "to": [
+            3,
+            1
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            2,
+            3
+          ],
+          "to": [
+            3,
+            3
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            2,
+            6
+          ],
+          "to": [
+            3,
+            6
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            4,
+            3
+          ],
+          "to": [
+            4,
+            4
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            4,
+            5
+          ],
+          "to": [
+            4,
+            6
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            6,
+            2
+          ],
+          "to": [
+            6,
+            3
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            8,
+            6
+          ],
+          "to": [
+            8,
+            7
+          ],
+          "relation": "="
+        }
+      ],
+      "solution": [
+        "ЛЛССЛЛСС",
+        "ССЛЛСЛСЛ",
+        "СЛЛСЛСЛС",
+        "ЛССЛССЛЛ",
+        "ЛССЛСЛСЛ",
+        "СЛЛСЛСЛС",
+        "СЛСЛСЛЛС",
+        "ЛСЛСЛССЛ"
+      ]
+    },
+    {
+      "size": 10,
+      "seed": 7,
+      "generation_policy": "только единственность",
+      "given_count": 5,
+      "edge_count": 24,
+      "solution_count_capped_at_2": 1,
+      "valid_by_direct_check": true,
+      "symbol_inversion_without_givens_has_multiple_solutions": true,
+      "opposite_value_in_unknown_cell_has_no_solution": true,
+      "solved_by_line_propagation_without_search": false,
+      "rejected_deletions": 29,
+      "givens": [
+        {
+          "row": 1,
+          "column": 1,
+          "symbol": "луна"
+        },
+        {
+          "row": 3,
+          "column": 2,
+          "symbol": "луна"
+        },
+        {
+          "row": 9,
+          "column": 6,
+          "symbol": "луна"
+        },
+        {
+          "row": 9,
+          "column": 9,
+          "symbol": "солнце"
+        },
+        {
+          "row": 10,
+          "column": 10,
+          "symbol": "солнце"
+        }
+      ],
+      "edges": [
+        {
+          "from": [
+            1,
+            2
+          ],
+          "to": [
+            2,
+            2
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            1,
+            6
+          ],
+          "to": [
+            1,
+            7
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            1,
+            8
+          ],
+          "to": [
+            2,
+            8
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            1,
+            9
+          ],
+          "to": [
+            2,
+            9
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            1,
+            10
+          ],
+          "to": [
+            2,
+            10
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            2,
+            2
+          ],
+          "to": [
+            2,
+            3
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            2,
+            3
+          ],
+          "to": [
+            3,
+            3
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            3,
+            3
+          ],
+          "to": [
+            3,
+            4
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            3,
+            10
+          ],
+          "to": [
+            4,
+            10
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            4,
+            4
+          ],
+          "to": [
+            4,
+            5
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            5,
+            1
+          ],
+          "to": [
+            6,
+            1
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            5,
+            2
+          ],
+          "to": [
+            6,
+            2
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            5,
+            4
+          ],
+          "to": [
+            6,
+            4
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            5,
+            6
+          ],
+          "to": [
+            6,
+            6
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            5,
+            9
+          ],
+          "to": [
+            6,
+            9
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            6,
+            5
+          ],
+          "to": [
+            6,
+            6
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            7,
+            8
+          ],
+          "to": [
+            8,
+            8
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            7,
+            9
+          ],
+          "to": [
+            8,
+            9
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            7,
+            10
+          ],
+          "to": [
+            8,
+            10
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            8,
+            4
+          ],
+          "to": [
+            8,
+            5
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            9,
+            1
+          ],
+          "to": [
+            10,
+            1
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            9,
+            4
+          ],
+          "to": [
+            10,
+            4
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            9,
+            10
+          ],
+          "to": [
+            10,
+            10
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            10,
+            6
+          ],
+          "to": [
+            10,
+            7
+          ],
+          "relation": "="
+        }
+      ],
+      "solution": [
+        "ЛСЛССЛСЛСЛ",
+        "СЛЛСЛССЛСЛ",
+        "СЛСЛЛСЛСЛС",
+        "ЛССЛСЛССЛЛ",
+        "СЛЛСЛСЛЛСС",
+        "ЛЛССЛСЛЛСС",
+        "ССЛЛСЛССЛЛ",
+        "ЛССЛЛССЛЛС",
+        "СЛЛССЛЛССЛ",
+        "ЛССЛСЛЛСЛС"
+      ]
+    },
+    {
+      "size": 10,
+      "seed": 29,
+      "generation_policy": "только единственность",
+      "given_count": 8,
+      "edge_count": 24,
+      "solution_count_capped_at_2": 1,
+      "valid_by_direct_check": true,
+      "symbol_inversion_without_givens_has_multiple_solutions": true,
+      "opposite_value_in_unknown_cell_has_no_solution": true,
+      "solved_by_line_propagation_without_search": false,
+      "rejected_deletions": 32,
+      "givens": [
+        {
+          "row": 2,
+          "column": 1,
+          "symbol": "солнце"
+        },
+        {
+          "row": 3,
+          "column": 8,
+          "symbol": "солнце"
+        },
+        {
+          "row": 6,
+          "column": 4,
+          "symbol": "луна"
+        },
+        {
+          "row": 6,
+          "column": 10,
+          "symbol": "луна"
+        },
+        {
+          "row": 7,
+          "column": 4,
+          "symbol": "солнце"
+        },
+        {
+          "row": 7,
+          "column": 8,
+          "symbol": "солнце"
+        },
+        {
+          "row": 9,
+          "column": 10,
+          "symbol": "солнце"
+        },
+        {
+          "row": 10,
+          "column": 2,
+          "symbol": "луна"
+        }
+      ],
+      "edges": [
+        {
+          "from": [
+            1,
+            2
+          ],
+          "to": [
+            1,
+            3
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            1,
+            4
+          ],
+          "to": [
+            1,
+            5
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            1,
+            5
+          ],
+          "to": [
+            2,
+            5
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            1,
+            9
+          ],
+          "to": [
+            2,
+            9
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            2,
+            1
+          ],
+          "to": [
+            3,
+            1
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            3,
+            3
+          ],
+          "to": [
+            4,
+            3
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            3,
+            5
+          ],
+          "to": [
+            3,
+            6
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            4,
+            2
+          ],
+          "to": [
+            4,
+            3
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            4,
+            8
+          ],
+          "to": [
+            4,
+            9
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            5,
+            2
+          ],
+          "to": [
+            5,
+            3
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            5,
+            4
+          ],
+          "to": [
+            6,
+            4
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            5,
+            4
+          ],
+          "to": [
+            5,
+            5
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            5,
+            6
+          ],
+          "to": [
+            5,
+            7
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            6,
+            2
+          ],
+          "to": [
+            7,
+            2
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            7,
+            1
+          ],
+          "to": [
+            8,
+            1
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            7,
+            5
+          ],
+          "to": [
+            8,
+            5
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            7,
+            5
+          ],
+          "to": [
+            7,
+            6
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            7,
+            7
+          ],
+          "to": [
+            8,
+            7
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            8,
+            4
+          ],
+          "to": [
+            9,
+            4
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            9,
+            1
+          ],
+          "to": [
+            10,
+            1
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            9,
+            5
+          ],
+          "to": [
+            10,
+            5
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            9,
+            6
+          ],
+          "to": [
+            9,
+            7
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            9,
+            10
+          ],
+          "to": [
+            10,
+            10
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            10,
+            6
+          ],
+          "to": [
+            10,
+            7
+          ],
+          "relation": "="
+        }
+      ],
+      "solution": [
+        "ЛСЛСЛССЛЛС",
+        "СЛСЛЛССЛЛС",
+        "ЛСЛССЛЛССЛ",
+        "СЛСЛЛССЛЛС",
+        "ЛСЛССЛЛССЛ",
+        "СЛСЛЛССЛСЛ",
+        "ЛСЛССЛЛСЛС",
+        "СЛСЛЛССЛСЛ",
+        "ЛССЛСЛЛСЛС",
+        "СЛЛССЛЛССЛ"
+      ]
+    },
+    {
+      "size": 10,
+      "seed": 101,
+      "generation_policy": "только единственность",
+      "given_count": 13,
+      "edge_count": 14,
+      "solution_count_capped_at_2": 1,
+      "valid_by_direct_check": true,
+      "symbol_inversion_without_givens_has_multiple_solutions": true,
+      "opposite_value_in_unknown_cell_has_no_solution": true,
+      "solved_by_line_propagation_without_search": false,
+      "rejected_deletions": 27,
+      "givens": [
+        {
+          "row": 2,
+          "column": 10,
+          "symbol": "луна"
+        },
+        {
+          "row": 3,
+          "column": 1,
+          "symbol": "солнце"
+        },
+        {
+          "row": 3,
+          "column": 5,
+          "symbol": "луна"
+        },
+        {
+          "row": 4,
+          "column": 5,
+          "symbol": "солнце"
+        },
+        {
+          "row": 5,
+          "column": 3,
+          "symbol": "солнце"
+        },
+        {
+          "row": 6,
+          "column": 4,
+          "symbol": "солнце"
+        },
+        {
+          "row": 6,
+          "column": 7,
+          "symbol": "солнце"
+        },
+        {
+          "row": 6,
+          "column": 8,
+          "symbol": "луна"
+        },
+        {
+          "row": 7,
+          "column": 2,
+          "symbol": "луна"
+        },
+        {
+          "row": 7,
+          "column": 6,
+          "symbol": "луна"
+        },
+        {
+          "row": 8,
+          "column": 1,
+          "symbol": "солнце"
+        },
+        {
+          "row": 9,
+          "column": 1,
+          "symbol": "солнце"
+        },
+        {
+          "row": 10,
+          "column": 9,
+          "symbol": "солнце"
+        }
+      ],
+      "edges": [
+        {
+          "from": [
+            1,
+            9
+          ],
+          "to": [
+            2,
+            9
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            1,
+            10
+          ],
+          "to": [
+            2,
+            10
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            2,
+            1
+          ],
+          "to": [
+            2,
+            2
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            2,
+            3
+          ],
+          "to": [
+            2,
+            4
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            3,
+            2
+          ],
+          "to": [
+            4,
+            2
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            4,
+            3
+          ],
+          "to": [
+            4,
+            4
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            4,
+            7
+          ],
+          "to": [
+            4,
+            8
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            5,
+            9
+          ],
+          "to": [
+            6,
+            9
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            7,
+            3
+          ],
+          "to": [
+            8,
+            3
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            8,
+            7
+          ],
+          "to": [
+            8,
+            8
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            9,
+            3
+          ],
+          "to": [
+            9,
+            4
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            9,
+            5
+          ],
+          "to": [
+            10,
+            5
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            9,
+            5
+          ],
+          "to": [
+            9,
+            6
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            10,
+            8
+          ],
+          "to": [
+            10,
+            9
+          ],
+          "relation": "="
+        }
+      ],
+      "solution": [
+        "ЛСЛЛСЛСЛСС",
+        "ЛЛССЛСЛССЛ",
+        "СЛССЛЛССЛЛ",
+        "ЛСЛЛССЛЛСС",
+        "СЛССЛСЛСЛЛ",
+        "ССЛСЛЛСЛЛС",
+        "ЛЛСЛСЛСЛСС",
+        "ССЛСЛСЛСЛЛ",
+        "ССЛЛСЛСЛЛС",
+        "ЛЛСЛССЛССЛ"
+      ]
+    },
+    {
+      "size": 6,
+      "seed": 7,
+      "generation_policy": "единственность и вывод по линиям",
+      "given_count": 4,
+      "edge_count": 8,
+      "solution_count_capped_at_2": 1,
+      "valid_by_direct_check": true,
+      "symbol_inversion_without_givens_has_multiple_solutions": true,
+      "opposite_value_in_unknown_cell_has_no_solution": true,
+      "solved_by_line_propagation_without_search": true,
+      "rejected_deletions": 12,
+      "givens": [
+        {
+          "row": 3,
+          "column": 1,
+          "symbol": "луна"
+        },
+        {
+          "row": 3,
+          "column": 4,
+          "symbol": "солнце"
+        },
+        {
+          "row": 4,
+          "column": 1,
+          "symbol": "солнце"
+        },
+        {
+          "row": 4,
+          "column": 6,
+          "symbol": "солнце"
+        }
+      ],
+      "edges": [
+        {
+          "from": [
+            1,
+            2
+          ],
+          "to": [
+            1,
+            3
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            2,
+            1
+          ],
+          "to": [
+            3,
+            1
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            2,
+            4
+          ],
+          "to": [
+            3,
+            4
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            2,
+            4
+          ],
+          "to": [
+            2,
+            5
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            3,
+            6
+          ],
+          "to": [
+            4,
+            6
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            4,
+            2
+          ],
+          "to": [
+            5,
+            2
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            4,
+            3
+          ],
+          "to": [
+            5,
+            3
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            5,
+            4
+          ],
+          "to": [
+            5,
+            5
+          ],
+          "relation": "×"
+        }
+      ],
+      "solution": [
+        "СЛЛСЛС",
+        "СЛСЛСЛ",
+        "ЛСЛССЛ",
+        "СЛСЛЛС",
+        "ЛССЛСЛ",
+        "ЛСЛСЛС"
+      ]
+    },
+    {
+      "size": 6,
+      "seed": 29,
+      "generation_policy": "единственность и вывод по линиям",
+      "given_count": 4,
+      "edge_count": 7,
+      "solution_count_capped_at_2": 1,
+      "valid_by_direct_check": true,
+      "symbol_inversion_without_givens_has_multiple_solutions": true,
+      "opposite_value_in_unknown_cell_has_no_solution": true,
+      "solved_by_line_propagation_without_search": true,
+      "rejected_deletions": 11,
+      "givens": [
+        {
+          "row": 3,
+          "column": 1,
+          "symbol": "солнце"
+        },
+        {
+          "row": 3,
+          "column": 6,
+          "symbol": "солнце"
+        },
+        {
+          "row": 4,
+          "column": 3,
+          "symbol": "луна"
+        },
+        {
+          "row": 6,
+          "column": 4,
+          "symbol": "луна"
+        }
+      ],
+      "edges": [
+        {
+          "from": [
+            1,
+            4
+          ],
+          "to": [
+            1,
+            5
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            2,
+            2
+          ],
+          "to": [
+            2,
+            3
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            3,
+            2
+          ],
+          "to": [
+            4,
+            2
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            4,
+            1
+          ],
+          "to": [
+            4,
+            2
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            4,
+            4
+          ],
+          "to": [
+            5,
+            4
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            5,
+            2
+          ],
+          "to": [
+            6,
+            2
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            5,
+            6
+          ],
+          "to": [
+            6,
+            6
+          ],
+          "relation": "="
+        }
+      ],
+      "solution": [
+        "ЛСЛССЛ",
+        "ЛССЛСЛ",
+        "СЛЛСЛС",
+        "ЛСЛССЛ",
+        "СЛСЛЛС",
+        "СЛСЛЛС"
+      ]
+    },
+    {
+      "size": 6,
+      "seed": 101,
+      "generation_policy": "единственность и вывод по линиям",
+      "given_count": 4,
+      "edge_count": 7,
+      "solution_count_capped_at_2": 1,
+      "valid_by_direct_check": true,
+      "symbol_inversion_without_givens_has_multiple_solutions": true,
+      "opposite_value_in_unknown_cell_has_no_solution": true,
+      "solved_by_line_propagation_without_search": true,
+      "rejected_deletions": 11,
+      "givens": [
+        {
+          "row": 1,
+          "column": 3,
+          "symbol": "луна"
+        },
+        {
+          "row": 2,
+          "column": 4,
+          "symbol": "луна"
+        },
+        {
+          "row": 4,
+          "column": 2,
+          "symbol": "солнце"
+        },
+        {
+          "row": 5,
+          "column": 6,
+          "symbol": "солнце"
+        }
+      ],
+      "edges": [
+        {
+          "from": [
+            1,
+            4
+          ],
+          "to": [
+            2,
+            4
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            2,
+            1
+          ],
+          "to": [
+            2,
+            2
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            2,
+            4
+          ],
+          "to": [
+            3,
+            4
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            2,
+            4
+          ],
+          "to": [
+            2,
+            5
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            3,
+            1
+          ],
+          "to": [
+            3,
+            2
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            4,
+            6
+          ],
+          "to": [
+            5,
+            6
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            5,
+            3
+          ],
+          "to": [
+            5,
+            4
+          ],
+          "relation": "="
+        }
+      ],
+      "solution": [
+        "ЛСЛСЛС",
+        "СЛСЛСЛ",
+        "ССЛСЛЛ",
+        "ЛСЛЛСС",
+        "ЛЛССЛС",
+        "СЛСЛСЛ"
+      ]
+    },
+    {
+      "size": 8,
+      "seed": 7,
+      "generation_policy": "единственность и вывод по линиям",
+      "given_count": 7,
+      "edge_count": 12,
+      "solution_count_capped_at_2": 1,
+      "valid_by_direct_check": true,
+      "symbol_inversion_without_givens_has_multiple_solutions": true,
+      "opposite_value_in_unknown_cell_has_no_solution": true,
+      "solved_by_line_propagation_without_search": true,
+      "rejected_deletions": 19,
+      "givens": [
+        {
+          "row": 1,
+          "column": 6,
+          "symbol": "луна"
+        },
+        {
+          "row": 2,
+          "column": 8,
+          "symbol": "луна"
+        },
+        {
+          "row": 3,
+          "column": 1,
+          "symbol": "солнце"
+        },
+        {
+          "row": 5,
+          "column": 4,
+          "symbol": "луна"
+        },
+        {
+          "row": 5,
+          "column": 7,
+          "symbol": "луна"
+        },
+        {
+          "row": 6,
+          "column": 4,
+          "symbol": "луна"
+        },
+        {
+          "row": 8,
+          "column": 8,
+          "symbol": "солнце"
+        }
+      ],
+      "edges": [
+        {
+          "from": [
+            1,
+            5
+          ],
+          "to": [
+            2,
+            5
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            1,
+            5
+          ],
+          "to": [
+            1,
+            6
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            2,
+            7
+          ],
+          "to": [
+            3,
+            7
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            3,
+            3
+          ],
+          "to": [
+            4,
+            3
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            4,
+            3
+          ],
+          "to": [
+            4,
+            4
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            4,
+            5
+          ],
+          "to": [
+            4,
+            6
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            5,
+            2
+          ],
+          "to": [
+            6,
+            2
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            6,
+            1
+          ],
+          "to": [
+            6,
+            2
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            7,
+            2
+          ],
+          "to": [
+            8,
+            2
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            7,
+            6
+          ],
+          "to": [
+            7,
+            7
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            8,
+            1
+          ],
+          "to": [
+            8,
+            2
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            8,
+            5
+          ],
+          "to": [
+            8,
+            6
+          ],
+          "relation": "×"
+        }
+      ],
+      "solution": [
+        "ЛСЛСЛЛСС",
+        "ССЛЛССЛЛ",
+        "СЛСЛСЛЛС",
+        "ЛЛССЛССЛ",
+        "ЛСЛЛССЛС",
+        "СЛСЛСЛСЛ",
+        "СЛССЛЛСЛ",
+        "ЛСЛСЛСЛС"
+      ]
+    },
+    {
+      "size": 8,
+      "seed": 29,
+      "generation_policy": "единственность и вывод по линиям",
+      "given_count": 7,
+      "edge_count": 9,
+      "solution_count_capped_at_2": 1,
+      "valid_by_direct_check": true,
+      "symbol_inversion_without_givens_has_multiple_solutions": true,
+      "opposite_value_in_unknown_cell_has_no_solution": true,
+      "solved_by_line_propagation_without_search": true,
+      "rejected_deletions": 16,
+      "givens": [
+        {
+          "row": 1,
+          "column": 3,
+          "symbol": "солнце"
+        },
+        {
+          "row": 1,
+          "column": 8,
+          "symbol": "солнце"
+        },
+        {
+          "row": 2,
+          "column": 2,
+          "symbol": "солнце"
+        },
+        {
+          "row": 2,
+          "column": 6,
+          "symbol": "луна"
+        },
+        {
+          "row": 6,
+          "column": 3,
+          "symbol": "солнце"
+        },
+        {
+          "row": 6,
+          "column": 5,
+          "symbol": "солнце"
+        },
+        {
+          "row": 7,
+          "column": 2,
+          "symbol": "луна"
+        }
+      ],
+      "edges": [
+        {
+          "from": [
+            3,
+            1
+          ],
+          "to": [
+            4,
+            1
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            3,
+            2
+          ],
+          "to": [
+            4,
+            2
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            3,
+            4
+          ],
+          "to": [
+            4,
+            4
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            3,
+            6
+          ],
+          "to": [
+            4,
+            6
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            5,
+            4
+          ],
+          "to": [
+            5,
+            5
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            5,
+            5
+          ],
+          "to": [
+            6,
+            5
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            5,
+            7
+          ],
+          "to": [
+            6,
+            7
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            7,
+            4
+          ],
+          "to": [
+            8,
+            4
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            7,
+            6
+          ],
+          "to": [
+            8,
+            6
+          ],
+          "relation": "="
+        }
+      ],
+      "solution": [
+        "ЛЛССЛСЛС",
+        "ЛСЛСЛЛСС",
+        "СЛСЛСЛСЛ",
+        "СЛСЛЛСЛС",
+        "ЛСЛССЛСЛ",
+        "ЛССЛСЛЛС",
+        "СЛЛСЛССЛ",
+        "ССЛЛССЛЛ"
+      ]
+    },
+    {
+      "size": 8,
+      "seed": 101,
+      "generation_policy": "единственность и вывод по линиям",
+      "given_count": 8,
+      "edge_count": 7,
+      "solution_count_capped_at_2": 1,
+      "valid_by_direct_check": true,
+      "symbol_inversion_without_givens_has_multiple_solutions": true,
+      "opposite_value_in_unknown_cell_has_no_solution": true,
+      "solved_by_line_propagation_without_search": true,
+      "rejected_deletions": 15,
+      "givens": [
+        {
+          "row": 1,
+          "column": 4,
+          "symbol": "солнце"
+        },
+        {
+          "row": 2,
+          "column": 7,
+          "symbol": "солнце"
+        },
+        {
+          "row": 3,
+          "column": 2,
+          "symbol": "луна"
+        },
+        {
+          "row": 4,
+          "column": 5,
+          "symbol": "солнце"
+        },
+        {
+          "row": 5,
+          "column": 4,
+          "symbol": "луна"
+        },
+        {
+          "row": 7,
+          "column": 2,
+          "symbol": "луна"
+        },
+        {
+          "row": 7,
+          "column": 4,
+          "symbol": "луна"
+        },
+        {
+          "row": 7,
+          "column": 5,
+          "symbol": "солнце"
+        }
+      ],
+      "edges": [
+        {
+          "from": [
+            2,
+            1
+          ],
+          "to": [
+            3,
+            1
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            2,
+            3
+          ],
+          "to": [
+            3,
+            3
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            2,
+            6
+          ],
+          "to": [
+            3,
+            6
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            4,
+            3
+          ],
+          "to": [
+            4,
+            4
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            4,
+            5
+          ],
+          "to": [
+            4,
+            6
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            6,
+            2
+          ],
+          "to": [
+            6,
+            3
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            8,
+            6
+          ],
+          "to": [
+            8,
+            7
+          ],
+          "relation": "="
+        }
+      ],
+      "solution": [
+        "ЛЛССЛЛСС",
+        "ССЛЛСЛСЛ",
+        "СЛЛСЛСЛС",
+        "ЛССЛССЛЛ",
+        "ЛССЛСЛСЛ",
+        "СЛЛСЛСЛС",
+        "СЛСЛСЛЛС",
+        "ЛСЛСЛССЛ"
+      ]
+    },
+    {
+      "size": 10,
+      "seed": 7,
+      "generation_policy": "единственность и вывод по линиям",
+      "given_count": 7,
+      "edge_count": 24,
+      "solution_count_capped_at_2": 1,
+      "valid_by_direct_check": true,
+      "symbol_inversion_without_givens_has_multiple_solutions": true,
+      "opposite_value_in_unknown_cell_has_no_solution": true,
+      "solved_by_line_propagation_without_search": true,
+      "rejected_deletions": 31,
+      "givens": [
+        {
+          "row": 1,
+          "column": 1,
+          "symbol": "луна"
+        },
+        {
+          "row": 2,
+          "column": 5,
+          "symbol": "луна"
+        },
+        {
+          "row": 3,
+          "column": 2,
+          "symbol": "луна"
+        },
+        {
+          "row": 9,
+          "column": 6,
+          "symbol": "луна"
+        },
+        {
+          "row": 9,
+          "column": 7,
+          "symbol": "луна"
+        },
+        {
+          "row": 9,
+          "column": 9,
+          "symbol": "солнце"
+        },
+        {
+          "row": 10,
+          "column": 10,
+          "symbol": "солнце"
+        }
+      ],
+      "edges": [
+        {
+          "from": [
+            1,
+            2
+          ],
+          "to": [
+            2,
+            2
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            1,
+            6
+          ],
+          "to": [
+            1,
+            7
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            1,
+            8
+          ],
+          "to": [
+            2,
+            8
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            1,
+            9
+          ],
+          "to": [
+            2,
+            9
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            1,
+            10
+          ],
+          "to": [
+            2,
+            10
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            2,
+            2
+          ],
+          "to": [
+            2,
+            3
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            2,
+            3
+          ],
+          "to": [
+            3,
+            3
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            3,
+            3
+          ],
+          "to": [
+            3,
+            4
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            3,
+            10
+          ],
+          "to": [
+            4,
+            10
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            4,
+            4
+          ],
+          "to": [
+            4,
+            5
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            5,
+            1
+          ],
+          "to": [
+            6,
+            1
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            5,
+            2
+          ],
+          "to": [
+            6,
+            2
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            5,
+            4
+          ],
+          "to": [
+            6,
+            4
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            5,
+            6
+          ],
+          "to": [
+            6,
+            6
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            5,
+            9
+          ],
+          "to": [
+            6,
+            9
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            6,
+            5
+          ],
+          "to": [
+            6,
+            6
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            7,
+            9
+          ],
+          "to": [
+            8,
+            9
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            7,
+            10
+          ],
+          "to": [
+            8,
+            10
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            8,
+            4
+          ],
+          "to": [
+            8,
+            5
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            8,
+            5
+          ],
+          "to": [
+            9,
+            5
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            9,
+            1
+          ],
+          "to": [
+            10,
+            1
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            9,
+            4
+          ],
+          "to": [
+            10,
+            4
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            10,
+            6
+          ],
+          "to": [
+            10,
+            7
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            10,
+            8
+          ],
+          "to": [
+            10,
+            9
+          ],
+          "relation": "×"
+        }
+      ],
+      "solution": [
+        "ЛСЛССЛСЛСЛ",
+        "СЛЛСЛССЛСЛ",
+        "СЛСЛЛСЛСЛС",
+        "ЛССЛСЛССЛЛ",
+        "СЛЛСЛСЛЛСС",
+        "ЛЛССЛСЛЛСС",
+        "ССЛЛСЛССЛЛ",
+        "ЛССЛЛССЛЛС",
+        "СЛЛССЛЛССЛ",
+        "ЛССЛСЛЛСЛС"
+      ]
+    },
+    {
+      "size": 10,
+      "seed": 29,
+      "generation_policy": "единственность и вывод по линиям",
+      "given_count": 8,
+      "edge_count": 23,
+      "solution_count_capped_at_2": 1,
+      "valid_by_direct_check": true,
+      "symbol_inversion_without_givens_has_multiple_solutions": true,
+      "opposite_value_in_unknown_cell_has_no_solution": true,
+      "solved_by_line_propagation_without_search": true,
+      "rejected_deletions": 31,
+      "givens": [
+        {
+          "row": 2,
+          "column": 1,
+          "symbol": "солнце"
+        },
+        {
+          "row": 3,
+          "column": 8,
+          "symbol": "солнце"
+        },
+        {
+          "row": 6,
+          "column": 4,
+          "symbol": "луна"
+        },
+        {
+          "row": 6,
+          "column": 10,
+          "symbol": "луна"
+        },
+        {
+          "row": 7,
+          "column": 4,
+          "symbol": "солнце"
+        },
+        {
+          "row": 7,
+          "column": 8,
+          "symbol": "солнце"
+        },
+        {
+          "row": 9,
+          "column": 10,
+          "symbol": "солнце"
+        },
+        {
+          "row": 10,
+          "column": 2,
+          "symbol": "луна"
+        }
+      ],
+      "edges": [
+        {
+          "from": [
+            1,
+            2
+          ],
+          "to": [
+            1,
+            3
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            1,
+            4
+          ],
+          "to": [
+            1,
+            5
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            1,
+            5
+          ],
+          "to": [
+            2,
+            5
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            1,
+            9
+          ],
+          "to": [
+            2,
+            9
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            2,
+            1
+          ],
+          "to": [
+            3,
+            1
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            3,
+            3
+          ],
+          "to": [
+            4,
+            3
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            3,
+            5
+          ],
+          "to": [
+            3,
+            6
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            4,
+            2
+          ],
+          "to": [
+            4,
+            3
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            4,
+            8
+          ],
+          "to": [
+            4,
+            9
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            5,
+            2
+          ],
+          "to": [
+            5,
+            3
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            5,
+            4
+          ],
+          "to": [
+            6,
+            4
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            5,
+            4
+          ],
+          "to": [
+            5,
+            5
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            5,
+            6
+          ],
+          "to": [
+            5,
+            7
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            6,
+            2
+          ],
+          "to": [
+            7,
+            2
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            7,
+            1
+          ],
+          "to": [
+            8,
+            1
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            7,
+            5
+          ],
+          "to": [
+            8,
+            5
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            8,
+            4
+          ],
+          "to": [
+            9,
+            4
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            9,
+            1
+          ],
+          "to": [
+            10,
+            1
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            9,
+            5
+          ],
+          "to": [
+            10,
+            5
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            9,
+            6
+          ],
+          "to": [
+            9,
+            7
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            9,
+            10
+          ],
+          "to": [
+            10,
+            10
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            10,
+            6
+          ],
+          "to": [
+            10,
+            7
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            10,
+            8
+          ],
+          "to": [
+            10,
+            9
+          ],
+          "relation": "="
+        }
+      ],
+      "solution": [
+        "ЛСЛСЛССЛЛС",
+        "СЛСЛЛССЛЛС",
+        "ЛСЛССЛЛССЛ",
+        "СЛСЛЛССЛЛС",
+        "ЛСЛССЛЛССЛ",
+        "СЛСЛЛССЛСЛ",
+        "ЛСЛССЛЛСЛС",
+        "СЛСЛЛССЛСЛ",
+        "ЛССЛСЛЛСЛС",
+        "СЛЛССЛЛССЛ"
+      ]
+    },
+    {
+      "size": 10,
+      "seed": 101,
+      "generation_policy": "единственность и вывод по линиям",
+      "given_count": 11,
+      "edge_count": 15,
+      "solution_count_capped_at_2": 1,
+      "valid_by_direct_check": true,
+      "symbol_inversion_without_givens_has_multiple_solutions": true,
+      "opposite_value_in_unknown_cell_has_no_solution": true,
+      "solved_by_line_propagation_without_search": true,
+      "rejected_deletions": 26,
+      "givens": [
+        {
+          "row": 2,
+          "column": 10,
+          "symbol": "луна"
+        },
+        {
+          "row": 3,
+          "column": 5,
+          "symbol": "луна"
+        },
+        {
+          "row": 4,
+          "column": 5,
+          "symbol": "солнце"
+        },
+        {
+          "row": 5,
+          "column": 3,
+          "symbol": "солнце"
+        },
+        {
+          "row": 6,
+          "column": 4,
+          "symbol": "солнце"
+        },
+        {
+          "row": 6,
+          "column": 8,
+          "symbol": "луна"
+        },
+        {
+          "row": 7,
+          "column": 2,
+          "symbol": "луна"
+        },
+        {
+          "row": 7,
+          "column": 6,
+          "symbol": "луна"
+        },
+        {
+          "row": 8,
+          "column": 1,
+          "symbol": "солнце"
+        },
+        {
+          "row": 9,
+          "column": 1,
+          "symbol": "солнце"
+        },
+        {
+          "row": 10,
+          "column": 9,
+          "symbol": "солнце"
+        }
+      ],
+      "edges": [
+        {
+          "from": [
+            1,
+            10
+          ],
+          "to": [
+            2,
+            10
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            2,
+            1
+          ],
+          "to": [
+            2,
+            2
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            2,
+            3
+          ],
+          "to": [
+            2,
+            4
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            3,
+            2
+          ],
+          "to": [
+            4,
+            2
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            4,
+            3
+          ],
+          "to": [
+            4,
+            4
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            4,
+            7
+          ],
+          "to": [
+            4,
+            8
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            5,
+            9
+          ],
+          "to": [
+            6,
+            9
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            7,
+            3
+          ],
+          "to": [
+            8,
+            3
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            8,
+            7
+          ],
+          "to": [
+            8,
+            8
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            8,
+            9
+          ],
+          "to": [
+            8,
+            10
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            9,
+            3
+          ],
+          "to": [
+            9,
+            4
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            9,
+            5
+          ],
+          "to": [
+            10,
+            5
+          ],
+          "relation": "="
+        },
+        {
+          "from": [
+            9,
+            5
+          ],
+          "to": [
+            9,
+            6
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            9,
+            7
+          ],
+          "to": [
+            10,
+            7
+          ],
+          "relation": "×"
+        },
+        {
+          "from": [
+            10,
+            8
+          ],
+          "to": [
+            10,
+            9
+          ],
+          "relation": "="
+        }
+      ],
+      "solution": [
+        "ЛСЛЛСЛСЛСС",
+        "ЛЛССЛСЛССЛ",
+        "СЛССЛЛССЛЛ",
+        "ЛСЛЛССЛЛСС",
+        "СЛССЛСЛСЛЛ",
+        "ССЛСЛЛСЛЛС",
+        "ЛЛСЛСЛСЛСС",
+        "ССЛСЛСЛСЛЛ",
+        "ССЛЛСЛСЛЛС",
+        "ЛЛСЛССЛССЛ"
+      ]
+    }
+  ],
+  "independent_solver_cross_checks": 24,
+  "duration_seconds": 6.54,
+  "verification_date": "2026-11-07",
+  "scope": "Экспериментальная проверка словесных алгоритмов для 6×6, 8×8 и 10×10; браузерная реализация ещё не создана",
+  "local_check_counterexample": {
+    "size": 6,
+    "row": "С?Л???",
+    "edges": "× между клетками 1–2 и 2–3",
+    "solution_count": 0
+  }
+}
