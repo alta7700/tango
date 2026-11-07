@@ -14,6 +14,15 @@ const saveKey = `tango:${platform}:game:v1`, countKey = `tango:${platform}:count
 let state: GameState | null = null, count = 0, busy = false, paused = false, active = false, version = 0;
 let hint: HintResult | null = null, notice = '', zoom = false, lastTick = performance.now();
 let suspended = false, disposed = false, focusAfterPause: number | undefined;
+// Отложено только отображение нарушений, а не проверка поля или сохранение.
+let feedbackVisible = true, feedbackPending = false, feedbackTimer: ReturnType<typeof setTimeout> | undefined;
+function cancelFeedback() { clearTimeout(feedbackTimer); feedbackTimer = undefined; }
+function scheduleFeedback() {
+  cancelFeedback(); feedbackVisible = false; feedbackPending = true;
+  if (paused || suspended || disposed) return;
+  feedbackTimer = setTimeout(() => { feedbackTimer = undefined; feedbackPending = false; feedbackVisible = true; render(); }, 450);
+}
+
 try { state = restore(localStorage.getItem(saveKey)); const n = Number(localStorage.getItem(countKey)); if (Number.isSafeInteger(n) && n >= 0) count = n; } catch { /* Хранилище может быть недоступно. */ }
 if (state) count = Math.max(count, state.number);
 const root = app;
@@ -51,11 +60,11 @@ function render(focus?: number) {
   board.classList.toggle('zoomed', zoom && state?.puzzle.size === 10);
   if (!state) { board.innerHTML = `<div class="loading">${busy ? 'Готовим поле…' : 'Нет активной партии. Нажмите «Новая игра».'}</div>`; status.textContent = notice || (busy ? 'Создаём новую задачу…' : 'Не удалось создать задачу. Попробуйте ещё раз.'); return; }
   const { puzzle, board: values } = state, validation = validateBoard(puzzle, values);
-  const conflicts = new Set(validation.conflicts.flatMap(c => c.cells));
+  const conflicts = new Set(feedbackVisible ? validation.conflicts.flatMap(c => c.cells) : []);
   const related = new Set(hint && 'relatedCells' in hint ? hint.relatedCells : []);
   const relatedRelations = new Set(hint?.kind === 'step' ? hint.relatedRelations ?? [] : []);
   progress.textContent = `${values.filter(v => v !== null).length} / ${values.length}`;
-  status.textContent = paused ? 'Игра на паузе' : busy ? 'Подождите немного…' : notice || (validation.conflicts[0]?.message ?? '');
+  status.textContent = paused ? 'Игра на паузе' : busy ? 'Подождите немного…' : notice || (feedbackVisible ? validation.conflicts[0]?.message ?? '' : '');
   board.style.setProperty('--size', String(puzzle.size)); board.innerHTML = '';
   board.setAttribute('aria-rowcount', String(puzzle.size)); board.setAttribute('aria-colcount', String(puzzle.size));
   // Строки сохраняют семантику таблицы, а массив клеток — индексацию связей.
@@ -91,12 +100,12 @@ function change(index: number, value: CellValue) {
   if (!state || busy || paused || validateBoard(state.puzzle, state.board).complete) return;
   syncTime();
   const next = move(state, index, value); if (next === state) return;
-  state = next; version++; hint = null; notice = ''; save(); render(index);
+  state = next; version++; hint = null; notice = ''; scheduleFeedback(); save(); render(index);
 }
 async function startGame() {
   if (busy || paused) return;
   // Версия не позволяет устаревшему асинхронному результату заменить другую партию.
-  busy = true; const requestVersion = ++version; hint = null; notice = ''; render();
+  busy = true; const requestVersion = ++version; hint = null; notice = ''; cancelFeedback(); feedbackPending = false; feedbackVisible = false; render();
   try {
     const nextNumber = count + 1;
     const puzzle = await worker.generate(Number(size.value) as BoardSize);
@@ -104,8 +113,8 @@ async function startGame() {
     // Рекламу показываем только после успешной подготовки следующей задачи.
     if (nextNumber % 3 === 0) { try { await container.showInterstitial(); } catch { /* Ошибка рекламы не препятствует игре. */ } }
     if (disposed || requestVersion !== version) return;
-    state = newState(puzzle, nextNumber); count = nextNumber; zoom = false; save();
-  } catch { if (!disposed) notice = 'Не удалось создать задачу. Попробуйте ещё раз.'; }
+    state = newState(puzzle, nextNumber); count = nextNumber; zoom = false; feedbackVisible = true; save();
+  } catch { if (!disposed) { notice = 'Не удалось создать задачу. Попробуйте ещё раз.'; if (state) scheduleFeedback(); } }
   finally { if (!disposed) { busy = false; render(); } }
 }
 async function requestHint() {
@@ -140,20 +149,20 @@ $('#new').onclick = startFromClick; $('#hint').onclick = () => void requestHint(
 root.addEventListener('keydown', event => {
   if (event.repeat && event.key === 'Enter' && (event.target as HTMLElement).matches('#new, #victory-new')) event.preventDefault();
 });
-$('#undo').onclick = () => { if (!state || busy || paused) return; syncTime(); state = undo(state); version++; hint = null; notice = ''; save(); render(); };
-$('#reset').onclick = () => { if (!state || busy || paused) return; syncTime(); state = reset(state); version++; hint = null; notice = ''; save(); render(); };
+$('#undo').onclick = () => { if (!state || busy || paused) return; syncTime(); state = undo(state); version++; hint = null; notice = ''; scheduleFeedback(); save(); render(); };
+$('#reset').onclick = () => { if (!state || busy || paused) return; syncTime(); state = reset(state); version++; hint = null; notice = ''; scheduleFeedback(); save(); render(); };
 $('#zoom').onclick = () => { zoom = !zoom; render(); };
 let initialized = false;
-const unsubscribe = container.onPauseChange(value => { paused = value; render(); if (initialized && !paused && !state && !busy) void startGame(); });
+const unsubscribe = container.onPauseChange(value => { paused = value; if (paused) cancelFeedback(); else if (feedbackPending) scheduleFeedback(); render(); if (initialized && !paused && !state && !busy) void startGame(); });
 const interval = setInterval(() => { updateClock(); if (active) save(); }, 1000);
 // BFCache сохраняет страницу живой: при возврате возобновляем те же службы.
 window.addEventListener('pagehide', event => {
-  suspended = true; syncActivity(); save();
+  suspended = true; cancelFeedback(); syncActivity(); save();
   if (event.persisted) return;
   // При настоящем уходе запрещаем запоздалым ответам изменять уничтоженный экран.
   disposed = true; version++; clearInterval(interval); unsubscribe(); worker.dispose(); container.dispose();
 });
-window.addEventListener('pageshow', event => { if (event.persisted && !disposed) { suspended = false; render(); } });
+window.addEventListener('pageshow', event => { if (event.persisted && !disposed) { suspended = false; if (feedbackPending) scheduleFeedback(); render(); } });
 await container.initialize();
 if (!disposed) {
   initialized = true;

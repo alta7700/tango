@@ -1,4 +1,6 @@
 import { test, expect, type Page } from '@playwright/test';
+import { generatePuzzle, solve, validateBoard } from '../../src/core';
+import type { CellValue } from '../../src/shared/types';
 
 const url = 'http://127.0.0.1:4273/';
 const gameKey = 'tango:standalone:game:v1';
@@ -113,22 +115,104 @@ for (const width of [320, 360, 1280]) {
   });
 }
 
-test('ошибочный ход сохраняется и доступен отмене', async ({ page }) => {
+// Сертифицированное поле обеспечивает продолжение до решения и прямой конфликт от солнца.
+function feedbackFixture() {
+  const puzzle = generatePuzzle({ size: 6, seed: 'state-test', maxAttempts: 0 });
+  const solution = solve(puzzle).solutions[0];
+  const index = puzzle.givens.findIndex((value, i) => {
+    const board: CellValue[] = [...puzzle.givens]; board[i] = 'sun';
+    return value === null && solution[i] === 'moon' && !validateBoard(puzzle, board).valid;
+  });
+  expect(index).toBeGreaterThanOrEqual(0);
+  return { puzzle, solution, index };
+}
+
+async function loadFeedbackFixture(page: Page) {
+  const fixture = feedbackFixture();
+  await page.clock.install();
+  await page.addInitScript(({ key, puzzle }) => { if (!localStorage.getItem(key)) localStorage.setItem(key, JSON.stringify({ version: 1, state: { puzzle, board: puzzle.givens, history: [], elapsed: 0, number: 1 } })); }, { key: gameKey, puzzle: fixture.puzzle });
   await page.goto(url);
   await expect(page.locator('#board .cell')).toHaveCount(36);
-  const initial = await state(page);
-  for (let i = 0; i < 36; i++) {
-    if (initial.puzzle.givens[i] !== null) continue;
-    await page.locator(`.cell[data-index="${i}"]`).click();
-    if (await page.locator('.cell.conflict').count()) break;
-  }
+  await page.clock.pauseAt((await page.evaluate(() => Date.now())) + 1000);
+  return fixture;
+}
+
+test('быстрый второй ввод не показывает ошибку и сразу сохраняется', async ({ page }) => {
+  const { index } = await loadFeedbackFixture(page);
+  const cell = page.locator(`.cell[data-index="${index}"]`);
+  await cell.focus(); await page.keyboard.press('Enter');
+  expect((await state(page)).board[index]).toBe('sun');
+  await expect(page.locator('.cell.conflict')).toHaveCount(0);
+  await expect(page.locator('#status')).toBeEmpty();
+  await page.clock.runFor(150);
+  await expect(page.locator('.cell.conflict')).toHaveCount(0);
+  await page.keyboard.press('Space');
+  expect((await state(page)).board[index]).toBe('moon');
+  await page.clock.runFor(450);
+  await expect(page.locator('.cell.conflict')).toHaveCount(0);
+  await expect(page.locator('#status')).toBeEmpty();
+});
+
+test('ошибка появляется после последнего хода и сразу исчезает при исправлении', async ({ page }) => {
+  const { index } = await loadFeedbackFixture(page);
+  const cell = page.locator(`.cell[data-index="${index}"]`);
+  await cell.click(); await page.clock.runFor(449);
+  await expect(page.locator('.cell.conflict')).toHaveCount(0);
+  await page.clock.runFor(1);
   await expect(page.locator('.cell.conflict').first()).toBeVisible();
+  await expect(page.locator('#status')).not.toBeEmpty();
+  await cell.click();
+  await expect(page.locator('.cell.conflict')).toHaveCount(0);
+  await expect(page.locator('#status')).toBeEmpty();
+  await cell.click(); await cell.click();
+  await page.clock.runFor(300); await cell.click(); await cell.click(); await cell.click();
+  await page.clock.runFor(300); await expect(page.locator('.cell.conflict')).toHaveCount(0);
+  await page.clock.runFor(150); await expect(page.locator('.cell.conflict').first()).toBeVisible();
   const incorrect = await state(page);
   await page.reload();
   await expect(page.locator('.cell.conflict').first()).toBeVisible();
   expect((await state(page)).board).toEqual(incorrect.board);
   await page.locator('#undo').click();
+  await expect(page.locator('.cell.conflict')).toHaveCount(0);
   expect((await state(page)).board).toEqual(incorrect.history.at(-1));
+});
+
+test('отмена, сброс и новая партия отменяют устаревшую подсветку', async ({ page }) => {
+  const { index } = await loadFeedbackFixture(page);
+  const cell = page.locator(`.cell[data-index="${index}"]`);
+  await cell.click(); await page.locator('#undo').click(); await page.clock.runFor(450);
+  await expect(page.locator('.cell.conflict')).toHaveCount(0);
+  await cell.click(); await page.locator('#reset').click(); await page.clock.runFor(450);
+  await expect(page.locator('.cell.conflict')).toHaveCount(0);
+  await cell.click(); await page.locator('#new').click();
+  await expect.poll(async () => (await state(page)).number).toBe(2);
+  await page.clock.runFor(450); await expect(page.locator('.cell.conflict')).toHaveCount(0);
+});
+
+test('возврат из BFCache заново отсчитывает задержку текущего поля', async ({ page }) => {
+  const { index } = await loadFeedbackFixture(page);
+  await page.locator(`.cell[data-index="${index}"]`).click();
+  await page.clock.runFor(300);
+  await page.evaluate(() => window.dispatchEvent(new PageTransitionEvent('pagehide', { persisted: true })));
+  await page.clock.runFor(1000);
+  await expect(page.locator('.cell.conflict')).toHaveCount(0);
+  await page.evaluate(() => window.dispatchEvent(new PageTransitionEvent('pageshow', { persisted: true })));
+  await page.clock.runFor(449); await expect(page.locator('.cell.conflict')).toHaveCount(0);
+  await page.clock.runFor(1); await expect(page.locator('.cell.conflict').first()).toBeVisible();
+});
+
+test('полное ошибочное поле не объявляется победой', async ({ page }) => {
+  const { index, solution } = feedbackFixture();
+  const fixture = feedbackFixture();
+  const board: CellValue[] = [...solution]; board[index] = null;
+  await page.clock.install();
+  await page.addInitScript(({ key, puzzle, board }) => localStorage.setItem(key, JSON.stringify({ version: 1, state: { puzzle, board, history: [], elapsed: 0, number: 1 } })), { key: gameKey, puzzle: fixture.puzzle, board });
+  await page.goto(url); await expect(page.locator('#board .cell')).toHaveCount(36);
+  await page.locator(`.cell[data-index="${index}"]`).click();
+  expect((await state(page)).board.every((value: CellValue) => value !== null)).toBe(true);
+  await expect(page.locator('#victory')).toBeHidden();
+  await page.clock.runFor(450); await expect(page.locator('.cell.conflict').first()).toBeVisible();
+  await expect(page.locator('#victory')).toBeHidden();
 });
 
 test('клавиатура меняет клетку и очищает её', async ({ page }) => {
