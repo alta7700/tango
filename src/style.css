@@ -365,3 +365,139 @@ footer {
     margin-top: 34px
   }
 }
+
+/* Экран игры занимает видимую область; прокрутка остаётся внутри отдельных областей. */
+html, body, #app {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none
+}
+.shell {
+  height: 100%;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 24px
+}
+header {
+  flex: none;
+  padding-bottom: 10px
+}
+main {
+  width: 100%;
+  min-height: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin: 10px auto 0
+}
+.game-heading, .status, .board-tools, .actions {
+  flex: none
+}
+.status {
+  min-height: 20px;
+  padding-top: 3px
+}
+.board-tools {
+  height: 22px
+}
+.board-scroll {
+  flex: 1 1 auto;
+  min-height: 70px;
+  display: flex;
+  justify-content: safe center;
+  align-items: flex-start
+}
+.board {
+  flex: none;
+  width: auto;
+  height: 100%;
+  max-width: 100%;
+  max-height: 600px;
+  margin: 0
+}
+.board.zoomed {
+  width: 600px;
+  height: 600px;
+  max-width: none;
+  max-height: none;
+  margin: 0 auto
+}
+.actions {
+  width: 100%;
+  margin: 8px auto
+}
+.hint-panel, .victory, .rules {
+  width: 100%;
+  flex: 0 1 auto;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  margin: 4px auto;
+  padding: 10px 14px
+}
+.hint-panel, .victory {
+  max-height: 25%;
+  /* Небольшая панель остаётся прокручиваемой вместе с кнопкой применения. */
+  min-height: 64px
+}
+.hint-panel p, .victory p {
+  margin: 5px 0
+}
+.rules {
+  max-height: 22%;
+  min-height: 32px;
+  padding: 5px 0
+}
+.rules p, .rules ul {
+  margin: 5px 0
+}
+footer {
+  display: none
+}
+@media(max-width:600px) {
+  .shell { padding: 8px 12px }
+  header { flex-direction: row; align-items: center; gap: 8px; padding-bottom: 6px }
+  .brand-mark { width: 32px; height: 32px; font-size: 21px }
+  .brand h1 { font-size: 21px }
+  .brand p, .controls label { display: none }
+  .controls { width: auto; flex-wrap: nowrap; margin-left: auto; gap: 5px }
+  .controls button, .controls select { padding: 7px 8px; font-size: 12px }
+  main { margin-top: 6px }
+  .game-heading h2 { font-size: 20px; margin-top: 0 }
+  .stats { gap: 10px }
+  .stats strong { font-size: 13px }
+  .actions { gap: 5px }
+  .actions button { padding: 8px 4px; font-size: 12px }
+  .board-tools { height: 22px }
+}
+/* Размер поля ограничен обоими измерениями доступной области, поэтому клетки квадратные. */
+.board-scroll {
+  container-type: size;
+  min-height: 0
+}
+.board {
+  width: min(100cqw, 100cqh, 600px);
+  height: auto
+}
+.board.zoomed {
+  width: 600px;
+  height: 600px
+}
+@media(max-height:500px) {
+  .shell { padding-top: 5px; padding-bottom: 5px }
+  header { padding-bottom: 4px }
+  .brand-mark { width: 30px; height: 30px; font-size: 20px }
+  .brand h1 { font-size: 20px }
+  .brand p { display: none }
+  main { margin-top: 4px }
+  .game-heading h2 { font-size: 19px; margin: 0 }
+  .stats { gap: 12px }
+  .status { min-height: 16px; padding: 0 }
+  .board-tools { height: 20px }
+  .actions { margin: 4px auto }
+  .actions button { padding: 6px 5px }
+  .hint-panel, .victory { min-height: 44px; padding: 6px 10px }
+  .rules { min-height: 28px; margin: 2px auto; padding: 2px 0 }
+}
