@@ -24,7 +24,7 @@ export interface Puzzle {
 
 /** Результат объяснимого поиска подсказки по публичным условиям. */
 export type HintResult =
-  | { kind: 'step'; index: number; value: SymbolValue; rule: string; message: string; relatedCells: number[]; relatedRelations?: number[] }
+  | { kind: 'step'; index: number; value: SymbolValue; rule: string; message: string; relatedCells: number[]; relatedRelations?: number[]; details?: string[] }
   | { kind: 'conflict'; message: string; relatedCells: number[] }
   | { kind: 'stuck'; message: string }
   | { kind: 'complete'; message: string };
