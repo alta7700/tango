@@ -4,6 +4,7 @@ type Reward = Awaited<ReturnType<GameContainer['requestHintReward']>>;
 type AdCallbacks = { onOpen(): void; onClose(wasShown: boolean): void; onError(error?: object): void; onRewarded?(): void };
 /** Используемая адаптером часть SDK Яндекс Игр. */
 export interface YandexSDK {
+  environment?: { i18n?: { lang?: string } };
   features?: { LoadingAPI?: { ready(): void }; GameplayAPI?: { start(): void; stop(): void } };
   adv?: { showRewardedVideo?(options: { callbacks: AdCallbacks }): void; showFullscreenAdv?(options: { callbacks: AdCallbacks }): void };
   on?(event: 'game_api_pause' | 'game_api_resume', listener: () => void): void;
@@ -114,6 +115,14 @@ export class YandexContainer implements GameContainer {
         finished = true;
         this.clear(timer);
         this.cancelPending.delete(cancel);
+        if (!this.disposed) {
+          // Пока переведён только русский: неподдерживаемый язык и ошибка SDK дают тот же доступный вариант.
+          let language: string | undefined;
+          try { language = sdk?.environment?.i18n?.lang; } catch { /* Неисправный SDK не мешает запуску. */ }
+          const supportedLanguages = ['ru'];
+          const selectedLanguage = supportedLanguages.find((supported) => supported === language) ?? 'ru';
+          if (this.doc?.documentElement) this.doc.documentElement.lang = selectedLanguage;
+        }
         if (!this.disposed && sdk) {
           this.sdk = sdk;
           try { sdk.on?.('game_api_pause', this.sdkPause); sdk.on?.('game_api_resume', this.sdkResume); } catch { /* Отказ подписки не мешает игре. */ }

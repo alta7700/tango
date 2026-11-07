@@ -25,6 +25,28 @@ describe('платформенные контейнеры', () => {
     await container.showInterstitial();
     expect(loader).not.toHaveBeenCalled();
   });
+  it.each(['ru', 'en', undefined])('выбирает доступный язык при языке SDK %s до готовности и запуска', async (language) => {
+    const order: string[] = [];
+    const doc = { documentElement: { lang: 'en' }, addEventListener: vi.fn(), removeEventListener: vi.fn() } as unknown as Document;
+    const sdk: YandexSDK = {
+      environment: { i18n: { get lang() { order.push('lang'); return language; } } },
+      features: { LoadingAPI: { ready: () => { order.push(`ready:${doc.documentElement.lang}`); } }, GameplayAPI: { start: () => { order.push(`start:${doc.documentElement.lang}`); }, stop: vi.fn() } },
+    };
+    const container = new YandexContainer({ document: doc, sdkLoader: async () => sdk });
+    container.ready(); container.gameplayStart(); await container.initialize();
+    expect(order).toEqual(['lang', 'ready:ru', 'start:ru']);
+    container.dispose();
+  });
+  it('использует русский при отсутствии или ошибке environment и SDK', async () => {
+    for (const loader of [async () => ({}), async () => ({ get environment() { throw Error(); } }), async () => { throw Error(); }]) {
+      const doc = { documentElement: { lang: 'en' }, addEventListener: vi.fn(), removeEventListener: vi.fn() } as unknown as Document;
+      const container = new YandexContainer({ document: doc, sdkLoader: loader });
+      await container.initialize();
+      expect(doc.documentElement.lang).toBe('ru');
+      expect(await container.requestHintReward()).toEqual({ granted: true, reason: 'unavailable' });
+      container.dispose();
+    }
+  });
   it('переживает отказ и тайм-аут инициализации', async () => {
     vi.useFakeTimers();
     for (const loader of [() => Promise.reject(new Error()), () => Promise.resolve(undefined), () => new Promise<YandexSDK>(() => {})]) {

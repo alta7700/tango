@@ -15,6 +15,17 @@ test.beforeEach(async ({ page }) => {
 });
 test.afterEach(async ({ page }) => { expect(pageErrors.get(page)).toEqual([]); });
 
+test('язык SDK читается до готовности и запуска, неподдерживаемый язык заменяется русским', async ({ page }) => {
+  await installSdk(page);
+  await page.goto(url);
+  await expect.poll(() => calls(page)).toContain('start');
+  const events = await calls(page);
+  expect(events.indexOf('lang')).toBeGreaterThan(events.indexOf('init'));
+  expect(events.indexOf('lang')).toBeLessThan(events.indexOf('ready'));
+  expect(events.indexOf('lang')).toBeLessThan(events.indexOf('start'));
+  await expect(page.locator('html')).toHaveAttribute('lang', 'ru');
+});
+
 for (const mode of ['reward', 'cancel', 'error', 'unavailable', 'init-error', '404'] as const) {
   test(`подсказка при состоянии SDK: ${mode}`, async ({ page }) => {
     await installSdk(page, mode);

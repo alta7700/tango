@@ -12,6 +12,7 @@ export async function installSdk(page: Page, mode: 'reward' | 'cancel' | 'error'
         if (${JSON.stringify(mode)} === 'init-error') throw new Error('SDK unavailable');
         const record = name => () => window.sdkCalls.push(name);
         return {
+          environment: { i18n: { get lang() { window.sdkCalls.push('lang'); return 'en'; } } },
           features: { LoadingAPI: { ready: record('ready') }, GameplayAPI: { start: record('start'), stop: record('stop') } },
           on: (name, callback) => { window.sdkListeners[name] = callback; },
           off: name => { delete window.sdkListeners[name]; },
