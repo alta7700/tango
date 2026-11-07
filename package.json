@@ -12,7 +12,8 @@
     "build": "npm run build:standalone && npm run build:yandex",
     "preview:standalone": "vite preview --outDir dist/standalone --host 127.0.0.1 --port 4273 --strictPort",
     "preview:yandex": "vite preview --outDir dist/yandex --host 127.0.0.1 --port 4274 --strictPort",
-    "test:e2e": "npm run build && playwright test"
+    "test:e2e": "npm run build && playwright test",
+    "release": "python3 scripts/release.py"
   },
   "devDependencies": {
     "@playwright/test": "^1.64.1",
